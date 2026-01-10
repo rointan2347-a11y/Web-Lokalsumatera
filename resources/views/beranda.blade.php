@@ -143,7 +143,8 @@
                             <i class="bi bi-star-fill me-2"></i> #1 Local Brand Sumatera
                         </span>
                         <h1 class="display-3 fw-black mb-4" style="font-weight: 800; letter-spacing: -2px; line-height: 1.1;">
-                            {{ $beranda->judul }}
+                            Lokal Sumatera
+                            
                         </h1>
                         <p class="lead text-secondary mb-5" style="line-height: 1.8;">
                             Local Brand asal Sumatera Selatan yang menghadirkan gaya modern dan kualitas premium untuk penampilan terbaik Anda.
