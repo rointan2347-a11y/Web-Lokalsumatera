@@ -54,9 +54,10 @@ Route::get('/faq', function () {
 });
 
 Route::get('/', function () {
-    $produk = Produk::withCount('ulasan')
-        ->withAvg('ulasan', 'rating')
-        ->get();
+   $produk = Produk::withCount('ulasan')
+    ->withAvg('ulasan', 'rating')
+    ->take(8) // Tambahkan ini agar hanya mengambil 8 produk saja
+    ->get();
     $produkBaruCount = Produk::where('created_at', '>=', Carbon::now()->subDays(7))->count();
     $beranda = BerandaWeb::first();
     $user = User::where('role', 'user')->count();
