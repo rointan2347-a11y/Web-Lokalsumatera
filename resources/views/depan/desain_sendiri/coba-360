@@ -1,0 +1,71 @@
+@extends('depan.layouts.main')
+@section('title')
+    Desain 360
+@endsection
+@section('content')
+    <style>
+        .arrow-btn {
+            cursor: pointer;
+            font-size: 2.5rem;
+            user-select: none;
+            transition: transform 0.2s;
+        }
+
+        .arrow-btn:hover {
+            transform: scale(1.2);
+        }
+
+        #shirt-preview {
+            max-height: 500px;
+            transition: opacity 0.4s ease;
+        }
+    </style>
+
+    <div class="container text-center py-5">
+
+        <h2 class="mb-4">360° Preview Desain Kaos</h2>
+
+        <div class="d-flex justify-content-center align-items-center">
+            <!-- Tombol Kiri -->
+            <div class="me-4 arrow-btn" onclick="toggleView()">
+                &#8634; <!-- Panah kiri -->
+            </div>
+
+            <!-- Gambar Kaos -->
+            <img id="shirt-preview" src="{{ asset('img/depan.png') }}" alt="Kaos" class="img-fluid">
+
+            <!-- Tombol Kanan -->
+            <div class="ms-4 arrow-btn" onclick="toggleView()">
+                &#8635; <!-- Panah kanan -->
+            </div>
+        </div>
+
+        <!-- Label posisi -->
+        <p class="mt-3 fw-bold" id="shirt-label">Tampilan Depan</p>
+
+    </div>
+
+    <script>
+        let isFront = true;
+
+        function toggleView() {
+            const img = document.getElementById('shirt-preview');
+            const label = document.getElementById('shirt-label');
+
+            // Animasi transisi
+            img.style.opacity = 0;
+
+            setTimeout(() => {
+                if (isFront) {
+                    img.src = "{{ asset('img/belakang.png') }}";
+                    label.textContent = "Tampilan Belakang";
+                } else {
+                    img.src = "{{ asset('img/depan.png') }}";
+                    label.textContent = "Tampilan Depan";
+                }
+                img.style.opacity = 1;
+                isFront = !isFront;
+            }, 300);
+        }
+    </script>
+@endsection
